@@ -1,4 +1,6 @@
+import { isPlatformServer } from '@angular/common';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Inject, PLATFORM_ID } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { Observable, of, ReplaySubject, timer } from 'rxjs';
 import { catchError, combineLatest, map, publish, refCount, shareReplay, startWith, switchMap } from 'rxjs/operators';
@@ -54,7 +56,10 @@ export class OpenWeatherMapsService {
      */
     public hasToken$: Observable<boolean>;
 
-    constructor(private http: HttpClient) {
+    private isPlatformServer: boolean = true;
+
+    constructor(private http: HttpClient, @Inject(PLATFORM_ID) platformId: Object) {
+        this.isPlatformServer = isPlatformServer(platformId);
         this.token$ = new ReplaySubject(1);
         this.hasToken$ = this.token$.pipe(
             map(() => true),
@@ -118,7 +123,9 @@ export class OpenWeatherMapsService {
         const params = new HttpParams().set(FIND_PARAM, query);
 
         return this.token$.pipe(
-            combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
+            this.isPlatformServer
+                ? map(token => token)
+                : combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
             switchMap((token: string) => this.http.get<OWMCityData>(url, { params: params.set(TOKEN_PARAM, token) })),
             publish(),
             refCount(),
@@ -137,7 +144,9 @@ export class OpenWeatherMapsService {
         const params = new HttpParams().set(CITY_ID_PARAM, cityId);
 
         return this.token$.pipe(
-            combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
+            this.isPlatformServer
+                ? map(token => token)
+                : combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
             switchMap(token => this.http.get<OWMCityData>(url, { params: params.set(TOKEN_PARAM, token) })),
             publish(),
             refCount(),
@@ -156,7 +165,9 @@ export class OpenWeatherMapsService {
         const params = new HttpParams().set(CITY_ID_PARAM, cityIds.join(','));
 
         return this.token$.pipe(
-            combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
+            this.isPlatformServer
+                ? map(token => token)
+                : combineLatest(timer(0, CURRENT_WEATHER_INTERVAL), token => token),
             switchMap(token =>
                 this.http.get<OWMGroupResponse<OWMCityData>>(url, { params: params.set(TOKEN_PARAM, token) }),
             ),
@@ -178,7 +189,7 @@ export class OpenWeatherMapsService {
         const params = new HttpParams().set(CITY_ID_PARAM, query);
 
         return this.token$.pipe(
-            combineLatest(timer(0, FORECAST_INTERVAL), token => token),
+            this.isPlatformServer ? map(token => token) : combineLatest(timer(0, FORECAST_INTERVAL), token => token),
             switchMap(token =>
                 this.http.get<OWMGroupResponse<OWMForecast>>(url, { params: params.set(TOKEN_PARAM, token) }),
             ),

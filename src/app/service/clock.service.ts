@@ -1,5 +1,6 @@
-import { Injectable } from '@angular/core';
-import { Observable, timer } from 'rxjs';
+import { isPlatformServer } from '@angular/common';
+import { Inject, Injectable, PLATFORM_ID } from '@angular/core';
+import { Observable, of, timer } from 'rxjs';
 import { animationFrame } from 'rxjs/internal/scheduler/animationFrame';
 import { distinctUntilChanged, map, publishReplay, refCount } from 'rxjs/operators';
 import {
@@ -48,26 +49,31 @@ export class ClockService {
     private hour$: Observable<number>;
     private day$: Observable<number>;
 
-    constructor() {
-        this.second$ = createClock(MILLISECONDS_IN_SECOND).pipe(
-            publishReplay(1),
-            refCount(),
-        );
+    constructor(@Inject(PLATFORM_ID) platformId: Object) {
+        if (isPlatformServer(platformId)) {
+            // For server-side rendering, bypass `requestAnimationFrame`
+            this.second$ = this.minute$ = this.hour$ = this.day$ = of(Date.now());
+        } else {
+            this.second$ = createClock(MILLISECONDS_IN_SECOND).pipe(
+                publishReplay(1),
+                refCount(),
+            );
 
-        this.minute$ = createClock(MILLISECONDS_IN_MINUTE).pipe(
-            publishReplay(1),
-            refCount(),
-        );
+            this.minute$ = createClock(MILLISECONDS_IN_MINUTE).pipe(
+                publishReplay(1),
+                refCount(),
+            );
 
-        this.hour$ = createClock(MILLISECONDS_IN_HOUR).pipe(
-            publishReplay(1),
-            refCount(),
-        );
+            this.hour$ = createClock(MILLISECONDS_IN_HOUR).pipe(
+                publishReplay(1),
+                refCount(),
+            );
 
-        this.day$ = createClock(MIILISECONDS_IN_DAY).pipe(
-            publishReplay(1),
-            refCount(),
-        );
+            this.day$ = createClock(MIILISECONDS_IN_DAY).pipe(
+                publishReplay(1),
+                refCount(),
+            );
+        }
     }
     /**
      * Get the display time in second accuracy
