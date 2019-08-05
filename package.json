@@ -1,0 +1,15 @@
+{
+  "name": "@wip/only-happy-when-it-rains",
+  "version": "0.0.1",
+  "description": "Single-page application showing European weather extremes",
+  "main": "dist/index.js",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Robbert/only-happy-when-it-rains.git"
+  },
+  "author": "Robbert Broersma",
+  "license": "AGPL-3.0-or-later"
+}
