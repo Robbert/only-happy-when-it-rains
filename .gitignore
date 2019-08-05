@@ -1,0 +1,3 @@
+# Ignore Node.js/NPM directories
+.npm/
+node_modules/
