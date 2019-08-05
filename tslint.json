@@ -1,6 +1,6 @@
 {
   "defaultSeverity": "error",
-  "extends": ["tslint-eslint-rules"],
+  "extends": ["tslint-eslint-rules", "rxjs-tslint-rules"],
   "rules": {
     "only-arrow-functions": true,
     "typedef-whitespace": [
@@ -89,6 +89,9 @@
       "check-type",
       "check-preblock"
     ],
+    "rxjs-no-unsafe-switchmap": true,
+    "rxjs-no-subject-unsubscribe": true,
+    "rxjs-finnish": true,
     "array-bracket-spacing": false,
     "arrow-parens": false,
     "block-spacing": true,

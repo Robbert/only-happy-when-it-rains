@@ -34,6 +34,7 @@
     "@types/node": "8.9.4",
     "lintspaces-cli": "0.7.1",
     "prettier": "1.17.1",
+    "rxjs-tslint-rules": "4.24.3",
     "ts-node": "7.0.0",
     "tslint": "5.15.0",
     "tslint-eslint-rules": "5.3.1",
