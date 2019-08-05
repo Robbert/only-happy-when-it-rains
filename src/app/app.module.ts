@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { CitiesOverviewComponent } from './container/cities-overview/cities-overview.component';
 import { TimeAgoComponent } from './component/time-ago/time-ago.component';
 import { WeatherForecastComponent } from './component/weather-forecast/weather-forecast.component';
 import { WeatherReportComponent } from './component/weather-report/weather-report.component';
@@ -13,6 +14,7 @@ import { WeatherVaneComponent } from './component/weather-vane/weather-vane.comp
 @NgModule({
     declarations: [
         AppComponent,
+        CitiesOverviewComponent,
         TimeAgoComponent,
         WeatherForecastComponent,
         WeatherReportComponent,

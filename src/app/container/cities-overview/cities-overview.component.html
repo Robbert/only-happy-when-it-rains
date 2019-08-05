@@ -1,0 +1,10 @@
+<section class="cities-overview">
+    <h1>Weather</h1>
+    <a
+        [routerLink]="['city', weather.id]"
+        *ngFor="let weather of weather$ | async; trackBy: getCityDataId"
+        class="cities-overview__city"
+    >
+        <lib-weather-summary [weather]="weather"></lib-weather-summary>
+    </a>
+</section>

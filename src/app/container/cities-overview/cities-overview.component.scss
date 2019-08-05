@@ -1,0 +1,46 @@
+@import "../../style/global/color";
+
+.cities-overview {
+    display: flex;
+    flex-direction: column;
+
+    & h1 {
+        display: none;
+    }
+
+    & h2 {
+        font-size: 2rem;
+        margin: 0;
+    }
+
+    &__city {
+        display: flex;
+        flex-direction: row;
+        min-height: 2em;
+
+        dt {
+            display: none;
+        }
+    }
+
+    a + a {
+        border-top: 1px solid rgba($primary-fill-color, 0.2);
+    }
+    /*
+     * Distinct colors for :focus and :hover, to clarify in case different
+     * elements are hovered and focused at the same time
+     */
+    a:hover {
+        background-color: rgba($primary-fill-color, 0.15);
+    }
+
+    a:focus {
+        background-color: rgba($primary-fill-color, 0.3);
+
+        /* ...and don't mess with the focus outline! */
+    }
+
+    a:last-of-type {
+        border-bottom: 1px solid rgba($primary-fill-color, 0.2);
+    }
+}
