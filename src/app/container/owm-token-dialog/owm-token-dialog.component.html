@@ -1,0 +1,17 @@
+<div class="modal">
+    <h1>OpenWeatherMaps API token</h1>
+    <p>Please enter your API token for the OpenWeatherMaps API.</p>
+    <p>
+        First <a href="https://openweathermap.org/">sign up and sign in</a>,
+        then you will find your API key
+        <a href="https://home.openweathermap.org/api_keys" target="_new"
+            >in your profile settings</a
+        >.
+    </p>
+    <h2>Enter your token</h2>
+    <lib-token-form
+        [check-custom-validity]="getValidator()"
+        (token)="setToken($event)"
+    >
+    </lib-token-form>
+</div>

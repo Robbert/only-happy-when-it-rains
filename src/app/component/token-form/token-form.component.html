@@ -1,0 +1,20 @@
+<form
+    action="./token"
+    method="POST"
+    [formGroup]="form"
+    (ngSubmit)="handleSubmit()"
+>
+    <p>
+        <label for="token">Token:</label>
+        <input
+            id="token"
+            type="password"
+            autocomplete="password"
+            name="token"
+            formControlName="token"
+        />
+    </p>
+    <p>
+        <button type="submit" [disabled]="!form.valid">Use token</button>
+    </p>
+</form>
