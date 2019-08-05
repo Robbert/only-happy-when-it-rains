@@ -1,0 +1,50 @@
+<section *ngIf="weather" class="weather-report">
+    <h1>{{ weather.name }}</h1>
+    <dl>
+        <div class="weather-report__temperature">
+            <dt>Temperature</dt>
+            <dd>{{ formatTemperature(weather.main.temp) }}</dd>
+        </div>
+    </dl>
+    <div class="weather-report__forecast">
+        <lib-weather-forecast [forecast]="forecast"></lib-weather-forecast>
+    </div>
+    <dl class="weather-report__details">
+        <div>
+            <dt>Sunrise</dt>
+            <dd>{{ weather.sys.sunrise * 1000 | date: "shortTime" }}</dd>
+        </div>
+        <div>
+            <dt>Sunset</dt>
+            <dd>{{ weather.sys.sunset * 1000 | date: "shortTime" }}</dd>
+        </div>
+        <div>
+            <dt>Wind</dt>
+            <dd>
+                <lib-weather-vane
+                    [wind-direction]="weather.wind.deg"
+                    [wind-speed]="weather.wind.speed"
+                ></lib-weather-vane>
+            </dd>
+        </div>
+        <div>
+            <dt>Humidity</dt>
+            <dd>{{ weather.main.humidity }} %</dd>
+        </div>
+        <div>
+            <dt>Visibility</dt>
+            <dd>{{ weather.visibility }} meters</dd>
+        </div>
+        <div>
+            <dt>Pressure</dt>
+            <dd>{{ weather.main.pressure }} hPa</dd>
+        </div>
+    </dl>
+    <p class="weather-report__last-modified">
+        Last updated:
+        <lib-time-ago
+            [time]="weather.dt * 1000"
+            [relativeTo]="now"
+        ></lib-time-ago>
+    </p>
+</section>

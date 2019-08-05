@@ -1,0 +1,63 @@
+@import "../../style/global/color";
+@import "../../style/global/reset";
+@import "../../style/global/util";
+
+.weather-report {
+    @include padding-horizontal(1rem);
+
+    padding-top: 2rem;
+
+    h1 {
+        @extend %reset-h;
+        font-size: 3rem;
+    }
+
+    h1,
+    &__temperature {
+        text-align: center;
+    }
+
+    dl {
+        @extend %reset-dl;
+    }
+
+    dd {
+        @extend %reset-dd;
+    }
+
+    &__forecast {
+        @include margin-vertical(2rem);
+    }
+
+    &__temperature {
+        dt {
+            @extend %hide-accessible;
+        }
+
+        font-size: 2rem;
+    }
+
+    &__details {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        margin-top: 2rem;
+
+        & > div {
+            margin-bottom: 1rem;
+            width: 50%;
+        }
+
+        dt {
+            font-variant: small-caps;
+            text-transform: lowercase;
+        }
+    }
+
+    &__last-modified {
+        @include margin-vertical(1rem);
+
+        color: rgba($primary-fill-color, 0.8);
+        font-size: 0.8rem;
+    }
+}

@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TimeAgoComponent } from './component/time-ago/time-ago.component';
 import { WeatherForecastComponent } from './component/weather-forecast/weather-forecast.component';
+import { WeatherReportComponent } from './component/weather-report/weather-report.component';
 import { WeatherSummaryComponent } from './component/weather-summary/weather-summary.component';
 import { WeatherVaneComponent } from './component/weather-vane/weather-vane.component';
 
@@ -14,6 +15,7 @@ import { WeatherVaneComponent } from './component/weather-vane/weather-vane.comp
         AppComponent,
         TimeAgoComponent,
         WeatherForecastComponent,
+        WeatherReportComponent,
         WeatherSummaryComponent,
         WeatherVaneComponent,
     ],
