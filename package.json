@@ -6,6 +6,9 @@
   "scripts": {
     "prebuild": "npm run clean",
     "build": "ng build",
+    "build:ssr": "run-s 'build:ssr:*'",
+    "build:ssr:client-and-server-bundles": "ng build --prod && ng run weather-app:server:production --bundleDependencies all",
+    "build:ssr:server": "webpack --config webpack.server.config.js --progress --colors",
     "clean": "run-p 'clean:*'",
     "clean:build": "rm -rf dist/*",
     "clean:test": "jest --clearCache",
@@ -18,6 +21,7 @@
     "lint-fix:prettier": "prettier --write '**/*.js' '**/*.css' '**/*.scss' '**/*.json' '**/*.jsx' '**/*.ts' '**/*.tsx' '*.yml'",
     "lint-fix:scss": "stylelint --fix 'src/**/*.scss'",
     "lint-fix:ts": "npm run lint:ts -- --fix",
+    "serve:ssr": "node dist/server",
     "test": "jest --config=.jestrc.json --coverage --coverageDirectory tmp/coverage/ --verbose",
     "test-ci": "jest --config=.jestrc.json --runInBand --ci",
     "test-watch": "jest --config=.jestrc.json --watch --noStackTrace"

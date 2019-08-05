@@ -28,7 +28,14 @@ import { WeatherVaneComponent } from './component/weather-vane/weather-vane.comp
         WeatherSummaryComponent,
         WeatherVaneComponent,
     ],
-    imports: [AppRoutingModule, BrowserModule, CommonModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+    imports: [
+        AppRoutingModule,
+        BrowserModule.withServerTransition({ appId: 'serverApp' }),
+        CommonModule,
+        HttpClientModule,
+        FormsModule,
+        ReactiveFormsModule,
+    ],
     providers: [],
     bootstrap: [AppComponent],
 })
