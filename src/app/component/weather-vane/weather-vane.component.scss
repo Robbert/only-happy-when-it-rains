@@ -1,0 +1,16 @@
+@import "../../style/global/util";
+
+.weather-vane {
+    display: flex;
+    justify-content: space-between;
+    width: 3.5ch;
+
+    &__wind-arrow {
+        display: inline-block;
+        transition: 1s ease-out;
+        transition-property: transform;
+    }
+    &__wind-direction {
+        @extend %hide-accessible;
+    }
+}

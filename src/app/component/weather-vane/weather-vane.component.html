@@ -1,0 +1,21 @@
+<span
+    [attr.title]="formatSummary(windSpeed, windDirection)"
+    class="weather-vane"
+>
+    <span
+        class="weather-vane__wind-arrow"
+        role="presentation"
+        [style.transform]="cssRotateDeg(windDirection)"
+        >{{ windIcon }}</span
+    >
+    <abbr
+        class="weather-vane__wind-direction"
+        [attr.title]="formatLongDirection(windDirection)"
+        >{{ formatShortDirection(windDirection) }}</abbr
+    >
+    <span class="weather-vane__wind-speed"
+        ><span class="weather-vane__wind-speed-value">{{
+            formatWindSpeed(windSpeed)
+        }}</span>
+    </span>
+</span>
