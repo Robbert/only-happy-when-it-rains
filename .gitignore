@@ -9,3 +9,7 @@ node_modules/
 dist/
 tmp/
 
+# Ignore developer settings
+.vscode/
+.env
+.DS_Store
