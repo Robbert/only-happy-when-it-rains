@@ -21,3 +21,97 @@ export const speedToBeaufort = (meterPerSec: number): number => {
         0,
     );
 };
+
+type CompassPoint = {
+    id: string;
+    azimuth: number;
+    description: string;
+    abbreviation: string;
+};
+
+/**
+ * Compass point descriptions, with descriptions up to 45 degree accuracy
+ *
+ * The identifiers could be used for localization purposes.
+ *
+ * Source:
+ * https://en.wikipedia.org/wiki/Points_of_the_compass#Compass_point_names
+ */
+const COMPASS_POINTS: CompassPoint[] = [
+    {
+        id: 'north',
+        azimuth: 0,
+        description: 'north',
+        abbreviation: 'N',
+    },
+    {
+        id: 'east',
+        azimuth: 90,
+        description: 'east',
+        abbreviation: 'E',
+    },
+    {
+        id: 'south',
+        azimuth: 180,
+        description: 'south',
+        abbreviation: 'S',
+    },
+    {
+        id: 'west',
+        azimuth: 270,
+        description: 'west',
+        abbreviation: 'W',
+    },
+    {
+        id: 'north-east',
+        azimuth: 45,
+        description: 'northeast',
+        abbreviation: 'NE',
+    },
+    {
+        id: 'south-east',
+        azimuth: 135,
+        description: 'southeast',
+        abbreviation: 'SE',
+    },
+    {
+        id: 'south-west',
+        azimuth: 225,
+        description: 'southwest',
+        abbreviation: 'SW',
+    },
+    {
+        id: 'north-west',
+        azimuth: 315,
+        description: 'northwest',
+        abbreviation: 'NW',
+    },
+];
+
+const FULL_CIRCLE = 360;
+
+/**
+ * Normalize direction to value between 0 and 360 degrees
+ */
+const normalizeDirection = (deg: number): number => (deg % FULL_CIRCLE) + (deg < 0 ? FULL_CIRCLE : 0);
+
+/**
+ * Get the compass closest to the compass direction in degrees
+ */
+const findCompassPoint = (direction: number): CompassPoint => {
+    const deg = normalizeDirection(direction);
+
+    return COMPASS_POINTS.reduce((closestPoint, point) =>
+        Math.abs(deg - point.azimuth) < Math.abs(deg - closestPoint.azimuth) ? point : closestPoint,
+    );
+};
+
+/**
+ * Convert the wind direction in degrees to the compass point abbreviation
+ */
+export const shortWindDirection = (deg: number): string => findCompassPoint(deg).abbreviation;
+
+/**
+ * Convert the wind direction in degrees to the compass point description
+ */
+export const longWindDirection = (deg: number): string => findCompassPoint(deg).description;
