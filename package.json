@@ -32,6 +32,8 @@
     "@angular/compiler-cli": "8.1.2",
     "@angular/language-service": "8.1.2",
     "@types/node": "8.9.4",
+    "husky": "2.3.0",
+    "lint-staged": "8.1.7",
     "lintspaces-cli": "0.7.1",
     "prettier": "1.17.1",
     "rxjs-tslint-rules": "4.24.3",
@@ -43,6 +45,17 @@
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Robbert/only-happy-when-it-rains.git"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "src/**/*.{css,js,json,jsx,scss,ts,tsx,yml}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "author": "Robbert Broersma",
   "license": "AGPL-3.0-or-later"
