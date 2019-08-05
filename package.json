@@ -3,7 +3,10 @@
   "version": "0.0.1",
   "description": "Single-page application showing European weather extremes",
   "main": "dist/index.js",
-  "scripts": {},
+  "scripts": {
+    "prebuild": "npm run clean",
+    "clean": "rm -rf dist/*"
+  },
   "dependencies": {},
   "devDependencies": {},
   "repository": {
