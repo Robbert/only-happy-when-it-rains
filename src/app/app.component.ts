@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 
 @Component({
+    encapsulation: ViewEncapsulation.None,
     selector: 'app-root',
     template: '<router-outlet></router-outlet>',
-    styles: [],
+    styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {}

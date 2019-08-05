@@ -1,9 +1,5 @@
-@import "global/color";
-@import "global/reset";
-
-a {
-    @extend %reset-a;
-}
+@import "style/global/color";
+@import "style/global/reset";
 
 html {
     background-color: darken($background-color, 33%);
@@ -13,6 +9,7 @@ html {
     height: 100%;
     text-shadow: $primary-shadow-color 1px 1px 5px;
 }
+
 body {
     @extend %reset-body;
 
@@ -23,4 +20,8 @@ body {
     margin: 0 auto;
     max-width: 30em;
     min-height: 100%;
+}
+
+a {
+    @extend %reset-a;
 }
