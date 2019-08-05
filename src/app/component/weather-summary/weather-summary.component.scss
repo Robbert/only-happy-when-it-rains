@@ -1,0 +1,42 @@
+@import "../../style/global/color";
+@import "../../style/global/reset";
+@import "../../style/global/util";
+
+:host {
+    width: 100%;
+}
+
+.weather-summary {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem 1rem;
+    width: 100%;
+
+    h2 {
+        @extend %reset-h;
+        font-size: 2rem;
+        width: 50%;
+    }
+
+    dl {
+        @extend %reset-dl;
+        display: flex;
+        flex-direction: row;
+        width: 50%;
+        & > div {
+            align-items: center;
+            display: flex;
+            justify-content: space-evenly;
+            width: 50%;
+        }
+    }
+
+    dt {
+        @extend %hide-accessible;
+    }
+
+    dd {
+        @extend %reset-dd;
+    }
+}
