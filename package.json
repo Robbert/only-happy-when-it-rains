@@ -7,7 +7,8 @@
     "prebuild": "npm run clean",
     "build": "ng build",
     "clean": "rm -rf dist/*",
-    "dev": "ng serve"
+    "dev": "ng serve",
+    "lint:editorconfig": "git ls-files '*.cfg' '*.cnf' '*.conf' '*.crt' '*.css' '*.csv' '*.dockerignore' '*.editorconfig' '*.env' '*.eslintignore' '*.eslintrc' '*.feature' '*.gitattributes' '*.gitignore' '*.groovy' '*.htm' '*.html' '*.ini' '*.json' '*.key' '*.less' '*.markdown' '*.md' '*.params' '*.pem' '*.php' '*.pub' '*.py' '*.rb' '*.rdf' '*.rq' '*.rsa' '*.scss' '*.service' '*.sh' '*.spec' '*.sql' '*.srl' '*.stylelintrc' '*.svg' '*.twig' '*.txt' '*.vcl' '*.wsdl' '*.xhtml' '*.xliff' '*.xml' '*.xqy' '*.xsd' '*.xsl' '*.xslt' '*.yml' '*AUTHORS' '*CONTRIBUTORS' '*Dockerfile' '*LICENSE' '*Makefile' '*README' '*Jenkinsfile' | xargs lintspaces --matchdotfiles --newline --editorconfig .editorconfig --ignores js-comments"
   },
   "dependencies": {
     "@angular/animations": "8.1.2",
@@ -28,6 +29,7 @@
     "@angular/compiler-cli": "8.1.2",
     "@angular/language-service": "8.1.2",
     "@types/node": "8.9.4",
+    "lintspaces-cli": "0.7.1",
     "ts-node": "7.0.0",
     "tslint": "5.15.0",
     "typescript": "3.4.3"
