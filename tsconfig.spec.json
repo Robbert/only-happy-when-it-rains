@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "./dist/out-tsc/spec",
+    "types": ["jest", "node"]
+  },
+  "files": ["src/app/jest-setup.ts", "src/app/polyfills.ts"],
+  "include": ["src/app/**/*.spec.ts", "src/app/**/*.d.ts"]
+}

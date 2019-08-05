@@ -7,11 +7,15 @@
     "prebuild": "npm run clean",
     "build": "ng build",
     "clean": "rm -rf dist/*",
+    "clean:test": "jest --clearCache",
     "dev": "ng serve",
     "lint:editorconfig": "git ls-files '*.cfg' '*.cnf' '*.conf' '*.crt' '*.css' '*.csv' '*.dockerignore' '*.editorconfig' '*.env' '*.eslintignore' '*.eslintrc' '*.feature' '*.gitattributes' '*.gitignore' '*.groovy' '*.htm' '*.html' '*.ini' '*.json' '*.key' '*.less' '*.markdown' '*.md' '*.params' '*.pem' '*.php' '*.pub' '*.py' '*.rb' '*.rdf' '*.rq' '*.rsa' '*.scss' '*.service' '*.sh' '*.spec' '*.sql' '*.srl' '*.stylelintrc' '*.svg' '*.twig' '*.txt' '*.vcl' '*.wsdl' '*.xhtml' '*.xliff' '*.xml' '*.xqy' '*.xsd' '*.xsl' '*.xslt' '*.yml' '*AUTHORS' '*CONTRIBUTORS' '*Dockerfile' '*LICENSE' '*Makefile' '*README' '*Jenkinsfile' | xargs lintspaces --matchdotfiles --newline --editorconfig .editorconfig --ignores js-comments",
     "lint:ts": "tslint --type-check --project tsconfig.json --config tslint.json './src/**/*.ts'",
     "lint-fix:prettier": "prettier --write '**/*.js' '**/*.css' '**/*.scss' '**/*.json' '**/*.jsx' '**/*.ts' '**/*.tsx' '*.yml'",
-    "lint-fix:ts": "npm run lint:ts -- --fix"
+    "lint-fix:ts": "npm run lint:ts -- --fix",
+    "test": "jest --config=.jestrc.json --coverage --coverageDirectory tmp/coverage/ --verbose",
+    "test-ci": "jest --config=.jestrc.json --runInBand --ci",
+    "test-watch": "jest --config=.jestrc.json --watch --noStackTrace"
   },
   "dependencies": {
     "@angular/animations": "8.1.2",
@@ -31,8 +35,11 @@
     "@angular/cli": "8.1.2",
     "@angular/compiler-cli": "8.1.2",
     "@angular/language-service": "8.1.2",
+    "@types/jest": "23.3.2",
     "@types/node": "8.9.4",
     "husky": "2.3.0",
+    "jest": "24.8.0",
+    "jest-preset-angular": "7.1.1",
     "lint-staged": "8.1.7",
     "lintspaces-cli": "0.7.1",
     "prettier": "1.17.1",

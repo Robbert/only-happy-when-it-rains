@@ -5,7 +5,7 @@
     "types": []
   },
   "include": ["src/app/**/*.ts"],
-  "exclude": ["src/app/test.ts", "**/*.spec.ts"],
+  "exclude": ["src/app/jest-setup.ts", "**/*.spec.ts"],
   "angularCompilerOptions": {
     "enableIvy": false
   }
