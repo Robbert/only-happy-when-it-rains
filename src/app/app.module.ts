@@ -4,9 +4,10 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { WeatherForecastComponent } from './component/weather-forecast/weather-forecast.component';
 
 @NgModule({
-    declarations: [AppComponent],
+    declarations: [AppComponent, WeatherForecastComponent],
     imports: [BrowserModule, AppRoutingModule, CommonModule, HttpClientModule],
     providers: [],
     bootstrap: [AppComponent],

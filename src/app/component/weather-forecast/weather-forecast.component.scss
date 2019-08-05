@@ -1,0 +1,45 @@
+@import "../../style/global/color";
+@import "../../style/global/reset";
+@import "../../style/global/util";
+
+.weather-forecast {
+    @extend %reset-ul;
+
+    display: flex;
+    flex-direction: row;
+    height: 10rem;
+    overflow: scroll;
+    width: 100%;
+
+    & > li {
+        @extend %reset-li;
+        @include padding-horizontal(0.5ch);
+
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        justify-content: space-around;
+
+        &:nth-child(odd) {
+            background-color: rgba($primary-fill-color, 0.1);
+        }
+    }
+
+    time {
+        font-size: 0.8rem;
+        font-weight: 500;
+    }
+
+    &__temperature-chart {
+        align-items: center;
+        display: flex;
+        height: 60%;
+    }
+
+    &__icon {
+        position: relative;
+        transition: 1s ease-out;
+        transition-property: top;
+    }
+}
