@@ -1,12 +1,14 @@
 <form
     action="./token"
+    class="token-form"
     method="POST"
     [formGroup]="form"
     (ngSubmit)="handleSubmit()"
 >
     <p>
-        <label for="token">Token:</label>
+        <label for="token" class="token-form__label">Token:</label>
         <input
+            class="token-form__text-input"
             id="token"
             type="password"
             autocomplete="password"

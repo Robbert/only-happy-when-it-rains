@@ -1,3 +1,5 @@
-input {
-    margin: 1ch;
+.token-form {
+    &__text-input {
+        margin: 1ch;
+    }
 }

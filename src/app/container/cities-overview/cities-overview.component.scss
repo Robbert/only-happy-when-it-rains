@@ -4,13 +4,8 @@
     display: flex;
     flex-direction: column;
 
-    & h1 {
+    &__header {
         display: none;
-    }
-
-    & h2 {
-        font-size: 2rem;
-        margin: 0;
     }
 
     &__city {
@@ -23,9 +18,14 @@
         }
     }
 
-    a + a {
+    &__city:last-of-type {
+        border-bottom: 1px solid rgba($primary-fill-color, 0.2);
+    }
+
+    &__city + &__city {
         border-top: 1px solid rgba($primary-fill-color, 0.2);
     }
+
     /*
      * Distinct colors for :focus and :hover, to clarify in case different
      * elements are hovered and focused at the same time
@@ -38,9 +38,5 @@
         background-color: rgba($primary-fill-color, 0.3);
 
         /* ...and don't mess with the focus outline! */
-    }
-
-    a:last-of-type {
-        border-bottom: 1px solid rgba($primary-fill-color, 0.2);
     }
 }

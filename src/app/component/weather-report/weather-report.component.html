@@ -1,43 +1,55 @@
 <section *ngIf="weather" class="weather-report">
-    <h1>{{ weather.name }}</h1>
-    <dl>
-        <div class="weather-report__temperature">
-            <dt>Temperature</dt>
-            <dd>{{ formatTemperature(weather.main.temp) }}</dd>
+    <h1 class="weather-report__header">{{ weather.name }}</h1>
+    <dl class="weather-report__temperature">
+        <div>
+            <dt class="weather-report__temperature-label">Temperature</dt>
+            <dd class="weather-report__temperature-value">
+                {{ formatTemperature(weather.main.temp) }}
+            </dd>
         </div>
     </dl>
     <div class="weather-report__forecast">
         <lib-weather-forecast [forecast]="forecast"></lib-weather-forecast>
     </div>
-    <dl class="weather-report__details">
-        <div>
-            <dt>Sunrise</dt>
-            <dd>{{ weather.sys.sunrise * 1000 | date: "shortTime" }}</dd>
+    <dl class="weather-report__measurements">
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Sunrise</dt>
+            <dd class="weather-report__measurement-value">
+                {{ weather.sys.sunrise * 1000 | date: "shortTime" }}
+            </dd>
         </div>
-        <div>
-            <dt>Sunset</dt>
-            <dd>{{ weather.sys.sunset * 1000 | date: "shortTime" }}</dd>
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Sunset</dt>
+            <dd class="weather-report__measurement-value">
+                {{ weather.sys.sunset * 1000 | date: "shortTime" }}
+            </dd>
         </div>
-        <div>
-            <dt>Wind</dt>
-            <dd>
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Wind</dt>
+            <dd class="weather-report__measurement-value">
                 <lib-weather-vane
                     [wind-direction]="weather.wind.deg"
                     [wind-speed]="weather.wind.speed"
                 ></lib-weather-vane>
             </dd>
         </div>
-        <div>
-            <dt>Humidity</dt>
-            <dd>{{ weather.main.humidity }} %</dd>
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Humidity</dt>
+            <dd class="weather-report__measurement-value">
+                {{ weather.main.humidity }} %
+            </dd>
         </div>
-        <div>
-            <dt>Visibility</dt>
-            <dd>{{ weather.visibility }} meters</dd>
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Visibility</dt>
+            <dd class="weather-report__measurement-value">
+                {{ weather.visibility }} meters
+            </dd>
         </div>
-        <div>
-            <dt>Pressure</dt>
-            <dd>{{ weather.main.pressure }} hPa</dd>
+        <div class="weather-report__measurement">
+            <dt class="weather-report__measurement-label">Pressure</dt>
+            <dd class="weather-report__measurement-value">
+                {{ weather.main.pressure }} hPa
+            </dd>
         </div>
     </dl>
     <p class="weather-report__last-modified">
