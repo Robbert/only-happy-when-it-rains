@@ -1,15 +1,21 @@
 <section class="weather-summary">
-    <h2>
+    <h2 class="weather-summary__header">
         {{ weather.name }}
     </h2>
-    <dl>
-        <div class="weather-summary__temperature">
-            <dt>Temperature</dt>
-            <dd>{{ formatTemperature(weather.main.temp) }}</dd>
+    <dl class="weather-summary__measurements">
+        <div
+            class="weather-summary__measurement weather-summary__measurement--temperature"
+        >
+            <dt class="weather-summary__measurement-label">Temperature</dt>
+            <dd class="weather-summary__measurement-value">
+                {{ formatTemperature(weather.main.temp) }}
+            </dd>
         </div>
-        <div class="weather-summary__wind">
-            <dt>Wind</dt>
-            <dd>
+        <div
+            class="weather-summary__measurement weather-summary__measurement--wind"
+        >
+            <dt class="weather-summary__measurement-label">Wind</dt>
+            <dd class="weather-summary__measurement-value">
                 <lib-weather-vane
                     [wind-direction]="weather.wind.deg"
                     [wind-speed]="weather.wind.speed"

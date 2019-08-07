@@ -1,8 +1,13 @@
 <ul class="weather-forecast">
-    <li *ngFor="let prediction of forecast; trackBy: getForecastTime">
-        <time [attr.datetime]="iso8601(prediction.dt * 1000)">{{
-            prediction.dt * 1000 | date: "HH:00"
-        }}</time>
+    <li
+        *ngFor="let prediction of forecast; trackBy: getForecastTime"
+        class="weather-forecast__prediction"
+    >
+        <time
+            [attr.datetime]="iso8601(prediction.dt * 1000)"
+            class="weather-forecast__prediction-time"
+            >{{ prediction.dt * 1000 | date: "HH:00" }}</time
+        >
         <div class="weather-forecast__temperature-chart">
             <span
                 class="weather-forecast__icon"

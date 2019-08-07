@@ -7,21 +7,27 @@
 
     padding-top: 2rem;
 
-    h1 {
+    &__header {
         @extend %reset-h;
         font-size: 3rem;
     }
 
-    h1,
+    &__header,
     &__temperature {
         text-align: center;
     }
 
-    dl {
+    &__measurements,
+    &__temperature {
         @extend %reset-dl;
     }
 
-    dd {
+    &__temperature-label {
+        @extend %hide-accessible;
+    }
+
+    &__measurement-value,
+    &__temperature-value {
         @extend %reset-dd;
     }
 
@@ -30,28 +36,29 @@
     }
 
     &__temperature {
-        dt {
-            @extend %hide-accessible;
-        }
-
         font-size: 2rem;
     }
 
-    &__details {
+    &__measurements {
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         margin-top: 2rem;
+    }
 
-        & > div {
-            margin-bottom: 1rem;
-            width: 50%;
-        }
+    &__measurement {
+        margin-bottom: 1rem;
+        width: 50%;
+    }
 
-        dt {
-            font-variant: small-caps;
-            text-transform: lowercase;
-        }
+    &__measurement-label {
+        font-variant: small-caps;
+        text-transform: lowercase;
+    }
+
+    &__measurement-value {
+        font-variant: small-caps;
+        text-transform: lowercase;
     }
 
     &__last-modified {
